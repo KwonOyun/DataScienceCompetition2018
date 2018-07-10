@@ -1,7 +1,5 @@
-words = 'Connect Foundation'
-if 'F'in words:
-    words.lower()
-    words = words[:7]+'&'+words[8:]
-else:
-    print(words)
-print(words)
+fhand = open('C:/Users/oyun/Desktop/kwon.txt', 'r')
+for lx in fhand:
+    ly = lx.rstrip()
+    print(ly)
+
