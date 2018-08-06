@@ -1,6 +1,7 @@
 import pandas as pd
 
-data_url = 'https://archive.ics.uci.edu/ml/machine-learning-databases/housing/housing.data' #Data URL
-# data_url = './housing.data' #Data URL
-df_data = pd.read_csv(data_url, sep='\s+', header = None) #csv 타입 데이터 로드, separate는 빈공간으로 지정하고, Column은 없음
-print(df_data.head())
+data_frame = pd.read_csv("C:/Users/oyun/Desktop/test.csv")
+s1 = pd.core.series.Series([1,2,3])
+s2 = pd.core.series.Series(['one', 'two', 'three'])
+temp = pd.DataFrame(data=dict(num=s1, word=s2))
+print(temp)
