@@ -11,9 +11,9 @@ friend_dict_list = [
 ]
 
 df1 = pd.DataFrame.from_dict(friend_dict_list)
-df1 = df1[['name', 'age', 'job']]
-df1 = df1.drop('age', axis=1)
-# print(df1)
+df1 = df1[['name', 'midterm', 'final']]
+# df1 = df1.drop('age', axis=1)
+print(df1)
 
 df2 = pd.DataFrame.from_dict(friend_dict_list)
 df2 = df2[['name', 'midterm', 'final']]
@@ -30,7 +30,24 @@ for row in df2['average'] :
         grades.append('F')
 
 df2['grade'] = grades
-print(df2)
+
+def pass_or_fail(row):
+    if row !='F':
+        return 'Pass'
+    else:
+        return 'Fail'
+df2.grade = df2.grade.apply(pass_or_fail)
+
+# print(df2)
+
+df4 = pd.DataFrame([
+    ['Ben', 50, 50]
+], columns=['name', 'midterm', 'final'])
+print(df4)
+
+df1 = df1.append(df4, ignore_index=True)
+print(df1)
+
 
 # print(df.head())
 # df.to_csv("C:/Users/oyun/Desktop/test1.csv")
@@ -50,3 +67,24 @@ friend_list = [
 # print(df_filtered3)
 # df_filtered4 = df.filter(regex='b$', axis=1)
 # print(df_filtered4)
+
+date_list = [
+    {
+        'yyyy-mm-dd' : '2000-06-27'
+    },
+    {
+        'yyyy-mm-dd' : '2007-10-27'
+    }
+]
+
+df3 = pd.DataFrame(date_list,columns=['yyyy-mm-dd'])
+
+def extract_year(row):
+    return row.split('-')[0]
+
+def extract_year2(row):
+    return row.split('-')[0]
+
+df3['year'] = df3['yyyy-mm-dd'].apply(extract_year2)
+# print(df3)
+
