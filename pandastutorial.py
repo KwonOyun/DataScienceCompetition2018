@@ -13,7 +13,7 @@ friend_dict_list = [
 df1 = pd.DataFrame.from_dict(friend_dict_list)
 df1 = df1[['name', 'midterm', 'final']]
 # df1 = df1.drop('age', axis=1)
-print(df1)
+# print(df1)
 
 df2 = pd.DataFrame.from_dict(friend_dict_list)
 df2 = df2[['name', 'midterm', 'final']]
@@ -43,10 +43,10 @@ df2.grade = df2.grade.apply(pass_or_fail)
 df4 = pd.DataFrame([
     ['Ben', 50, 50]
 ], columns=['name', 'midterm', 'final'])
-print(df4)
+# print(df4)
 
 df1 = df1.append(df4, ignore_index=True)
-print(df1)
+# print(df1)
 
 
 # print(df.head())
@@ -88,3 +88,33 @@ def extract_year2(row):
 df3['year'] = df3['yyyy-mm-dd'].apply(extract_year2)
 # print(df3)
 
+
+student_list  = [{'name': 'John', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Nate', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Abraham', 'major': "Physics", 'sex': "male"},
+                {'name': 'Brian', 'major': "Psychology", 'sex': "male"},
+                {'name': 'Janny', 'major': "Economics", 'sex': "female"},
+                {'name': 'Yuna', 'major': "Economics", 'sex': "female"},
+                {'name': 'Jeniffer', 'major': "Computer Science", 'sex': "female"},
+                {'name': 'Edward', 'major': "Computer Science", 'sex': "male"},
+                {'name': 'Zara', 'major': "Psychology", 'sex': "female"},
+                {'name': 'Wendy', 'major': "Economics", 'sex': "female"},
+                {'name': 'Sera', 'major': "Psychology", 'sex': "female"}
+         ]
+df = pd.DataFrame(student_list, columns = ['name', 'major', 'sex'])
+# print(df)
+
+groupby_major = df.groupby('major')
+# for name, group in groupby_major:
+#     print(name+" : "+str(len(group)))
+#     print(group)
+#     print()
+
+df_major_cnt = pd.DataFrame({'count' : groupby_major.size()}).reset_index()
+# print(df_major_cnt)
+
+groupby_sex = df.groupby('sex')
+for name, group in groupby_sex:
+    print(name+" : "+str(len(group)))
+    print(group)
+    print()
