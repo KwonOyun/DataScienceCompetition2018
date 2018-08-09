@@ -99,7 +99,8 @@ student_list  = [{'name': 'John', 'major': "Computer Science", 'sex': "male"},
                 {'name': 'Edward', 'major': "Computer Science", 'sex': "male"},
                 {'name': 'Zara', 'major': "Psychology", 'sex': "female"},
                 {'name': 'Wendy', 'major': "Economics", 'sex': "female"},
-                {'name': 'Sera', 'major': "Psychology", 'sex': "female"}
+                {'name': 'Sera', 'major': "Psychology", 'sex': "female"},
+                {'name': 'John', 'major': "Economics", 'sex': "male"}
          ]
 df = pd.DataFrame(student_list, columns = ['name', 'major', 'sex'])
 # print(df)
@@ -114,7 +115,12 @@ df_major_cnt = pd.DataFrame({'count' : groupby_major.size()}).reset_index()
 # print(df_major_cnt)
 
 groupby_sex = df.groupby('sex')
-for name, group in groupby_sex:
-    print(name+" : "+str(len(group)))
-    print(group)
-    print()
+# for name, group in groupby_sex:
+#     print(name+" : "+str(len(group)))
+#     print(group)
+#     print()
+
+# print(df.drop_duplicates())
+
+# print(df.duplicated(['name']))
+print(df.drop_duplicates(['name']))
