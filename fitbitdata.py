@@ -23,6 +23,7 @@ activetime = ActiveData['약간 활동적인 시간(분)']
 a = np.array([[1,2,3,4]])
 b = np.array([5,6,7,8])
 print(b)
+
 print(b.ndim)
 print(b.shape)
 b = b.reshape(1,-1)
