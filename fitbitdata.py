@@ -6,6 +6,7 @@ import xlrd
 SleepData  = pd.read_excel('C:/Users/oyun/Desktop/fitbitdata.xls', sheet_name='수면')
 ActiveData = pd.read_excel('C:/Users/oyun/Desktop/fitbitdata.xls', sheet_name='활동')
 
+print(type(ActiveData))
 date = ActiveData['날짜']
 
 kal = np.array(ActiveData['칼로리 소모량'])
@@ -19,6 +20,10 @@ for i in range(len(step)):
 distance = np.array(ActiveData['이동 거리'])
 
 activetime = ActiveData['약간 활동적인 시간(분)']
+
+
+# temp = ActiveData[['걸음 수', '칼로리 소모량']]
+# print(temp.head())
 
 a = np.array([[1,2,3,4]])
 b = np.array([5,6,7,8])
