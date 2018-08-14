@@ -2,9 +2,26 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import xlrd
+import glob
 
-SleepData  = pd.read_excel('C:/Users/oyun/Desktop/fitbitdata.xls', sheet_name='수면')
-ActiveData = pd.read_excel('C:/Users/oyun/Desktop/fitbitdata.xls', sheet_name='활동')
+for file in glob.glob("D:/fitbitdata/2018 SOKULEE_Fitbit_Data/*.xls"): #한명씩 파일 확인
+    SleepData  = pd.read_excel(file, sheet_name='수면')
+    ActiveData = pd.read_excel(file, sheet_name='활동')
+
+    SleepData = np.array(SleepData)
+    ActiveData = np.array(ActiveData)
+
+    dataSet = []
+    for i in range(len(ActiveData)):  #일(day)에 따른 반복
+        row  = []
+        for j in range(len(ActiveData[i])): #컬럼에 따른 반복
+            if j !=0 and j !=4 and ActiveData[i][j] is str:
+                row.append(int(ActiveData[i][j].replace(",", "")))
+            elif j !=0 and j!=4:
+                row.append(ActiveData[i][j])
+
+        dataSet.append(row)                 #한명의 데이터를 dataSet리스트 추가
+    ActiveMeans = np.mean(dataSet, axis=0)  #한사람의 컬럼별 평균
 
 print(type(ActiveData))
 date = ActiveData['날짜']
