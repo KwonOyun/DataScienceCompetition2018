@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import xlrd
 import glob
 
-for file in glob.glob("D:/fitbitdata/2018 SOKULEE_Fitbit_Data/*.xls"): #한명씩 파일 확인
+for file in glob.glob("D:\\Fitbitdata\\2018 SOKULEE_Fitbit_Data\\*.xls"): #한명씩 파일 확인
     SleepData  = pd.read_excel(file, sheet_name='수면')
     ActiveData = pd.read_excel(file, sheet_name='활동')
 
