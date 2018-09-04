@@ -5,25 +5,24 @@ import matplotlib.pyplot as plt
 
 Dataset = []
 d1 = [[2345,34,45],[3456,4,5],[4567,7,8],[5678, 23, 63]]
+X = [[10,20,30],[2,3,4], [5,6,8]]
+Y = [14565, 654, 765]
 
-X = np.array(d1)
-
-Train_X = X[:, 1:3]
-Train_Y = X[:, 0:1]
-# X = X.reshape(-1,1)
-
-print(X)
-print(Train_X)
-print(Train_Y)
-# print(Y)
-# plt.scatter(X,Y)
-# plt.show()
+# X = np.array(X).reshape(-1,1)
+X = np.array(X)
+Y = np.array(Y)
+# Y = Y.reshape(-1,1)
+print(X.shape,Y.shape)
 
 model = LinearRegression()
-model.fit(Train_X,Train_Y)
-beta_1 = model.coef_[0]  #기울기
+model = model.fit(X, Y)
+
+beta_1 = model.coef_[0]
 beta_2 = model.coef_[1]
-beta_0 = model.intercept_  #y절편
+beta_3 = model.coef_[2]
+beta_0 = model.intercept_
+print("Y =",beta_0,beta_1,"x1+", beta_2,"x2+",beta_3,"x3")
+
 
 # print(beta_0, beta_1, beta_2)
 # y_new = model.predict(100)  #구축된 모델에 대해 임의의 값 예측
@@ -37,5 +36,7 @@ Dataset.append(d1)
 Dataset.append(d2)
 Dataset.append([6,7,8])
 kwon = np.array(Dataset)
+# print(kwon)
 a = np.mean(Dataset, axis=0)
+# print(a)
 
